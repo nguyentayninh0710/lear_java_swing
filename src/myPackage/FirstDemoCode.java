@@ -86,17 +86,41 @@ public class FirstDemoCode extends JFrame {
 		btnSum.setBounds(6, 100, 62, 29);
 		contentPane.add(btnSum);
 		
-		JButton btnSum_1 = new JButton("-");
-		btnSum_1.setBounds(76, 100, 62, 29);
-		contentPane.add(btnSum_1);
+		JButton btnMinus = new JButton("-");
+		btnMinus.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int num1 = Integer.parseInt(textNumber1.getText());
+				int num2 = Integer.parseInt(textNumber2.getText());
+				int minus = num1 - num2;
+				textFieldResult.setText(String.valueOf(minus));
+			}
+		});
+		btnMinus.setBounds(76, 100, 62, 29);
+		contentPane.add(btnMinus);
 		
-		JButton btnX = new JButton("x");
-		btnX.setBounds(147, 100, 62, 29);
-		contentPane.add(btnX);
+		JButton btnMultiply = new JButton("x");
+		btnMultiply.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int num1 = Integer.parseInt(textNumber1.getText());
+				int num2 = Integer.parseInt(textNumber2.getText());
+				int multiply = num1 * num2;
+				textFieldResult.setText(String.valueOf(multiply));
+			}
+		});
+		btnMultiply.setBounds(147, 100, 62, 29);
+		contentPane.add(btnMultiply);
 		
-		JButton btnSum_3 = new JButton("/");
-		btnSum_3.setBounds(219, 100, 62, 29);
-		contentPane.add(btnSum_3);
+		JButton btnDivide = new JButton("/");
+		btnDivide.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				double num1 = Double.parseDouble(textNumber1.getText());
+				double num2 = Double.parseDouble(textNumber2.getText());
+				double divide = num1 / num2;
+				textFieldResult.setText(String.valueOf(divide));
+			}
+		});
+		btnDivide.setBounds(219, 100, 62, 29);
+		contentPane.add(btnDivide);
 
 	}
 }

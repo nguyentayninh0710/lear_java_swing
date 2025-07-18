@@ -72,18 +72,38 @@ public class simulationCalculator extends JFrame {
 		textNumber.setColumns(10);
 
 		JButton btnDivide = new JButton("/");
+		btnDivide.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				addNumbertoMonitor(btnDivide.getText());
+			}
+		});
 		btnDivide.setBounds(226, 70, 72, 37);
 		contentPane.add(btnDivide);
 
 		JButton btnMultiply = new JButton("x");
+		btnMultiply.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				addNumbertoMonitor(btnMultiply.getText());
+			}
+		});
 		btnMultiply.setBounds(226, 110, 72, 37);
 		contentPane.add(btnMultiply);
 
 		btnMinus = new JButton("-");
+		btnMinus.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				addNumbertoMonitor(btnMinus.getText());
+			}
+		});
 		btnMinus.setBounds(226, 150, 72, 37);
 		contentPane.add(btnMinus);
 
 		btnSum = new JButton("+");
+		btnSum.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				addNumbertoMonitor(btnSum.getText());
+			}
+		});
 		btnSum.setBounds(226, 190, 72, 37);
 		contentPane.add(btnSum);
 
@@ -96,14 +116,29 @@ public class simulationCalculator extends JFrame {
 		contentPane.add(btnPercent);
 
 		btnnum9 = new JButton("9");
+		btnnum9.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				addNumbertoMonitor(btnnum9.getText());
+			}
+		});
 		btnnum9.setBounds(153, 110, 72, 37);
 		contentPane.add(btnnum9);
 
 		btnnum6 = new JButton("6");
+		btnnum6.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				addNumbertoMonitor(btnnum6.getText());
+			}
+		});
 		btnnum6.setBounds(153, 150, 72, 37);
 		contentPane.add(btnnum6);
 
 		btnnum3 = new JButton("3");
+		btnnum3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				addNumbertoMonitor(btnnum3.getText());
+			}
+		});
 		btnnum3.setBounds(153, 190, 72, 37);
 		contentPane.add(btnnum3);
 
@@ -116,14 +151,29 @@ public class simulationCalculator extends JFrame {
 		contentPane.add(btnChangeSign);
 
 		btnnum8 = new JButton("8");
+		btnnum8.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				addNumbertoMonitor(btnnum8.getText());
+			}
+		});
 		btnnum8.setBounds(81, 110, 72, 37);
 		contentPane.add(btnnum8);
 
 		btnnum5 = new JButton("5");
+		btnnum5.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				addNumbertoMonitor(btnnum5.getText());
+			}
+		});
 		btnnum5.setBounds(81, 150, 72, 37);
 		contentPane.add(btnnum5);
 
 		btnnum2 = new JButton("2");
+		btnnum2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				addNumbertoMonitor(btnnum2.getText());
+			}
+		});
 		btnnum2.setBounds(81, 190, 72, 37);
 		contentPane.add(btnnum2);
 
@@ -134,33 +184,54 @@ public class simulationCalculator extends JFrame {
 		btnnum7 = new JButton("7");
 		btnnum7.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				addNumbertoMonitor(btnnum7.getText());
 			}
 		});
 		btnnum7.setBounds(9, 110, 72, 37);
 		contentPane.add(btnnum7);
 
 		btnnum4 = new JButton("4");
+		btnnum4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				addNumbertoMonitor(btnnum4.getText());
+			}
+		});
 		btnnum4.setBounds(9, 150, 72, 37);
 		contentPane.add(btnnum4);
 
 		btnnum1 = new JButton("1");
 		btnnum1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				calculatorString = textNumber.getText();
-				if (calculatorString.equals("0")) {
-					calculatorString = "1";
-				} else {
-					calculatorString += "1";
-				}
-				textNumber.setText(calculatorString);
+				addNumbertoMonitor(btnnum1.getText());
 			}
 		});
 		btnnum1.setBounds(9, 190, 72, 37);
 		contentPane.add(btnnum1);
 
 		btnnum0 = new JButton("0");
+		btnnum0.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				addNumbertoMonitor(btnnum0.getText());
+			}
+		});
 		btnnum0.setBounds(9, 230, 144, 37);
 		contentPane.add(btnnum0);
 
+	}
+	
+	public void addNumbertoMonitor(String num) {
+		calculatorString = textNumber.getText();
+		
+
+		
+		
+		
+		if (calculatorString.equals("0")) {
+			calculatorString = num;
+		} else {
+			calculatorString += num;
+		}
+		textNumber.setText(calculatorString);
+		
 	}
 }

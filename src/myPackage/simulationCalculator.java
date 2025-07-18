@@ -233,10 +233,12 @@ public class simulationCalculator extends JFrame {
 		}else {
 			switch (lastItem) {
 			case '+': {
-				if(num.equals('+')) {
+				if(num.equals("+")) { // STRING "" | CHAR ''
 					break;
 				} else {
+					System.out.println("old: " + calculatorString);
 					calculatorString = calculatorString.substring(0,calculatorString.length() -1 ) + num;
+					System.out.println("new: " + calculatorString);
 					textNumber.setText(calculatorString);
 					break;
 				}

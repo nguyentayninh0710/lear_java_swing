@@ -222,16 +222,25 @@ public class simulationCalculator extends JFrame {
 	public void addNumbertoMonitor(String num) {
 		calculatorString = textNumber.getText();
 		
-
-		
-		
-		
-		if (calculatorString.equals("0")) {
-			calculatorString = num;
-		} else {
-			calculatorString += num;
+		char lastItem = calculatorString.charAt(calculatorString.length() -1);
+		if(Character.isDigit(lastItem)) {
+			if (calculatorString.equals("0")) {
+				calculatorString = num;
+			} else {
+				calculatorString += num;
+			}
+			textNumber.setText(calculatorString);
+		}else {
+			switch (lastItem) {
+			case '+': {
+				
+				break;
+			}
 		}
-		textNumber.setText(calculatorString);
+		
+		
+		
+
 		
 	}
 }

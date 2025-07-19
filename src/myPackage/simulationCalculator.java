@@ -178,6 +178,13 @@ public class simulationCalculator extends JFrame {
 		contentPane.add(btnnum2);
 
 		btnAC = new JButton("AC");
+		btnAC.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				calculatorString = "0";
+				textNumber.setText(calculatorString);  
+				
+			}
+		});
 		btnAC.setBounds(9, 70, 72, 37);
 		contentPane.add(btnAC);
 
@@ -230,6 +237,18 @@ public class simulationCalculator extends JFrame {
 //			return;
 //		}
 		
+		System.out.println(calculatorString);
+		
+		if (calculatorString.equals("0")) {
+			if (num.equals("-")) {
+				calculatorString = calculatorString.substring(0,calculatorString.length() -1 ) + num;	
+			} else {
+				return;
+			}
+		}
+		
+	
+		
 		char lastItem = calculatorString.charAt(calculatorString.length() -1);
 		if(Character.isDigit(lastItem)) {
 			if (calculatorString.equals("0")) {
@@ -244,17 +263,20 @@ public class simulationCalculator extends JFrame {
 			case '-':
 			case 'x':
 			case '/':{
-				if(num.equals("+") || num.equals("-") || num.equals("x") || num.equals("/")) { // STRING "" | CHAR ''
-					System.out.println("old: " + calculatorString);
-					calculatorString = calculatorString.substring(0,calculatorString.length() -1 ) + num;
-					System.out.println("new: " + calculatorString);
-					textNumber.setText(calculatorString);
-				} else {
-					calculatorString += num;
-					textNumber.setText(calculatorString);
-				}
-				break;
 				
+				if(calculatorString.length() > 1) {
+				
+					if(num.equals("+") || num.equals("-") || num.equals("x") || num.equals("/")) { // STRING "" | CHAR ''
+						System.out.println("old: " + calculatorString);
+						calculatorString = calculatorString.substring(0,calculatorString.length() -1 ) + num;
+						System.out.println("new: " + calculatorString);
+						textNumber.setText(calculatorString);
+					} else {
+						calculatorString += num;
+						textNumber.setText(calculatorString);
+					}
+					break;
+				}
 			}
 			default: {
 				calculatorString += num;

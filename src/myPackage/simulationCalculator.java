@@ -228,26 +228,32 @@ public class simulationCalculator extends JFrame {
 	
 	public void addNumbertoMonitor(String num) {
 		calculatorString = textNumber.getText();
-		
-//		if (calculatorString.equals("0")) {
-//			if (Character.isDigit(num.charAt(0)) || num.equals("-")) {
-//				calculatorString = num;
-//				textNumber.setText(calculatorString);
-//			}
-//			return;
-//		}
-		
+			
 		System.out.println(calculatorString);
 		
 		if (calculatorString.equals("0")) {
-			if (num.equals("-")) {
-				calculatorString = calculatorString.substring(0,calculatorString.length() -1 ) + num;	
-			} else {
+			if (Character.isDigit(num.charAt(0))) {
+				calculatorString = num;
+				textNumber.setText(calculatorString);
 				return;
 			}
+			else if (num.equals("-")) {
+				calculatorString = "-";
+				textNumber.setText(calculatorString);
+				return;
+				} else {
+					return;
+			}
 		}
-		
-	
+		if (calculatorString.equals("-")) {
+			if (Character.isDigit(num.charAt(0))) {
+				calculatorString += num;
+				textNumber.setText(calculatorString);
+			}else {
+				return;
+			}
+			return;
+		}
 		
 		char lastItem = calculatorString.charAt(calculatorString.length() -1);
 		if(Character.isDigit(lastItem)) {
@@ -284,11 +290,6 @@ public class simulationCalculator extends JFrame {
 				break;
 			}
 		}
-			
-		
-		
-
-		
 	}
 }
 }

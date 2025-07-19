@@ -143,6 +143,11 @@ public class simulationCalculator extends JFrame {
 		contentPane.add(btnnum3);
 
 		btnComma = new JButton(",");
+		btnComma.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				addNumbertoMonitor(btnComma.getText());
+			}
+		});
 		btnComma.setBounds(153, 229, 72, 37);
 		contentPane.add(btnComma);
 
@@ -241,10 +246,14 @@ public class simulationCalculator extends JFrame {
 				calculatorString = "-";
 				textNumber.setText(calculatorString);
 				return;
-				} else {
-					return;
+			} else if(num.equals(",")) {
+				calculatorString += num;
+				textNumber.setText(calculatorString);
+				return;
 			}
 		}
+		
+		
 		if (calculatorString.equals("-")) {
 			if (Character.isDigit(num.charAt(0))) {
 				calculatorString += num;
@@ -253,6 +262,10 @@ public class simulationCalculator extends JFrame {
 				return;
 			}
 			return;
+		}
+		
+		if(num.equals(",")) {
+			
 		}
 		
 		char lastItem = calculatorString.charAt(calculatorString.length() -1);
@@ -270,6 +283,10 @@ public class simulationCalculator extends JFrame {
 			case 'x':
 			case '/':{
 				
+				if(num.equals(",")) {
+					return;
+				}
+				
 				if(calculatorString.length() > 1) {
 				
 					if(num.equals("+") || num.equals("-") || num.equals("x") || num.equals("/")) { // STRING "" | CHAR ''
@@ -284,6 +301,11 @@ public class simulationCalculator extends JFrame {
 					break;
 				}
 			}
+			case ',': {
+				if(num.equals(",")) {
+					return;
+				}
+			}
 			default: {
 				calculatorString += num;
 				textNumber.setText(calculatorString);
@@ -291,5 +313,7 @@ public class simulationCalculator extends JFrame {
 			}
 		}
 	}
+		
+		
 }
 }

@@ -108,6 +108,12 @@ public class simulationCalculator extends JFrame {
 		contentPane.add(btnSum);
 
 		btnResult = new JButton("=");
+		btnResult.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				calculatorString = convertCharacter(textNumber.getText());
+				System.out.println(calculatorString);
+			}
+		});
 		btnResult.setBounds(226, 230, 72, 37);
 		contentPane.add(btnResult);
 
@@ -232,13 +238,18 @@ public class simulationCalculator extends JFrame {
 	}
 	
 	public void addNumbertoMonitor(String num) {
-		calculatorString = textNumber.getText();
-			
+		
+		// Get current screen content 
+		// get text from the textNumber (screen), store it to the calculator string
+		
+		calculatorString = textNumber.getText();   
 		System.out.println(calculatorString);
 		
-		if (calculatorString.equals("0")) {
-			if (Character.isDigit(num.charAt(0))) {
-				calculatorString = num;
+		//When the screen shows 0
+		
+		if (calculatorString.equals("0")) {				//when screen show 0
+			if (Character.isDigit(num.charAt(0))) {		//if the input is a digit,  (charAt(0) = first character in string) 
+				calculatorString = num;					//
 				textNumber.setText(calculatorString);
 				return;
 			}
@@ -265,7 +276,14 @@ public class simulationCalculator extends JFrame {
 		}
 		
 		if(num.equals(",")) {
-			
+			for(int i = calculatorString.length() - 1; i >= 0; i--) {
+				if(calculatorString.charAt(i) == ',') {
+					return;
+				}
+				if(!Character.isDigit(calculatorString.charAt(i))) {
+					break;
+				}
+			}
 		}
 		
 		char lastItem = calculatorString.charAt(calculatorString.length() -1);
@@ -302,9 +320,11 @@ public class simulationCalculator extends JFrame {
 				}
 			}
 			case ',': {
-				if(num.equals(",")) {
+				if(num.equals(",") || num.equals("+") || num.equals("-") || num.equals("x") || num.equals("/")) {
 					return;
 				}
+				
+			
 			}
 			default: {
 				calculatorString += num;
@@ -316,4 +336,9 @@ public class simulationCalculator extends JFrame {
 		
 		
 }
+	
+	public String convertCharacter(String txtNumber) {
+		txtNumber = txtNumber.replace('x', '*').replace(',', '.');
+		return txtNumber;
+	}
 }

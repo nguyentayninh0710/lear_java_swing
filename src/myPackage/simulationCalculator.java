@@ -8,6 +8,8 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
 import java.awt.Font;
@@ -112,6 +114,7 @@ public class simulationCalculator extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				calculatorString = convertCharacter(textNumber.getText());
 				System.out.println(calculatorString);
+				calculatorString = caculator(calculatorString);
 			}
 		});
 		btnResult.setBounds(226, 230, 72, 37);
@@ -335,7 +338,30 @@ public class simulationCalculator extends JFrame {
 	}
 		
 		
-}
+}	
+	public String caculator(String calculatorString) {
+		//Regex positive lookbehind
+		String[] parts = calculatorString.replaceAll("\\s+", "").split("(?<=[+\\-*/])|(?=[+\\-*/])");
+
+		ArrayList<String> tokens =  new ArrayList<>(Arrays.asList(parts));
+		
+		for (int i = 0; i < tokens.size(); i ++) {
+			String token = tokens.get(i);
+			if (token.equals("*") || token.equals("/")) {
+				double left = Double.parseDouble(tokens.get(i-1));
+				double right = Double.parseDouble(tokens.get(i+1));
+				double result = token.equals("*") ? left * right : left / right; // Ternary Operator
+				tokens.set(i - 1, String.valueOf(result));
+				tokens.remove(i);
+				tokens.remove(i);
+				i--;				
+			}
+		}
+		
+		
+		
+		return calculatorString ;
+	}
 	
 	public String convertCharacter(String txtNumber) {
 		txtNumber = txtNumber.replace('x', '*').replace(',', '.');
